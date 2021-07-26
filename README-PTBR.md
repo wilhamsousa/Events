@@ -78,7 +78,7 @@ A API retorna os seguintes status:
 
 ## ✒️ Autor
 
-* **Fullstack developer** - *Trabalho Inicial* - [Wilham Ezequiel de Sousa ](https://www.linkedin.com/in/wilham-ezequiel-de-sousa-22373696/)
+* **Fullstack developer .Net/React** - *LinkedIn* - [Wilham Ezequiel de Sousa ](https://www.linkedin.com/in/wilham-ezequiel-de-sousa-22373696/)
 
 ## 📄 Licença
 

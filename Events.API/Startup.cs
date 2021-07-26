@@ -1,9 +1,11 @@
 using BigBrain.Corujinha.API;
 using Domain.Service.Mapping;
+using Infra.Repository.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -36,6 +38,10 @@ namespace Events.API
             });
 
             services.AddAutoMapper(typeof(MappingProfiles));
+            services.AddDbContext<EventContext>(options =>
+                options
+                .UseSqlServer(Configuration.GetConnectionString("DatabaseConnection"))
+                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
 
             ServicesInject.Execute(services);
         }
