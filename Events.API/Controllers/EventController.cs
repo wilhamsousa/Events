@@ -29,13 +29,18 @@ namespace Events.API.Controllers
         /// <param name="payload"></param>
         [Route("{id:guid}/[action]")]
         [HttpPost]
-        [ProducesResponseType(typeof(ResponseAPI<EventViewModel>), 200)]
-        //[ValidateAntiForgeryToken]
         public ActionResult Create(Guid id, EventPayload payload)
-        {            
-            var data = eventApplication.Create(id, payload);
-            var result = new ResponseAPI<EventViewModel>(data);
-            return Ok(result);
+        {
+            try
+            {
+                var data = eventApplication.Create(id, payload);
+                var result = new ResponseAPI<EventViewModel>(data);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return Conflict(new ResponseAPI<EventViewModel>(null, false, e.Message));
+            }
         }
 
         /// <summary>
@@ -46,8 +51,6 @@ namespace Events.API.Controllers
         /// <returns></returns>
         [Route("{id:guid}/[action]")]
         [HttpGet]
-        [ProducesResponseType(typeof(ResponseAPI<EventViewModel>), 200)]
-        //[ValidateAntiForgeryToken]
         public ActionResult Read(Guid id)
         {
             return Ok(new EventViewModel() { Id = Guid.NewGuid(), Name = "Test" });
@@ -60,8 +63,6 @@ namespace Events.API.Controllers
         /// <param name="payload"></param>
         [Route("{id:guid}/[action]")]
         [HttpPut]
-        [ProducesResponseType(typeof(ResponseAPI<EventViewModel>), 200)]
-        //[ValidateAntiForgeryToken]
         public ActionResult Update(Guid id, EventPayload payload)
         {
             return Ok(new EventViewModel() { Id = Guid.NewGuid(), Name = "Test" });
@@ -73,8 +74,6 @@ namespace Events.API.Controllers
         /// <param name="id"></param>
         [Route("{id:guid}/[action]")]
         [HttpDelete]
-        [ProducesResponseType(typeof(ResponseAPI<EventViewModel>), 200)]
-        //[ValidateAntiForgeryToken]
         public ActionResult Delete(Guid id)
         {
             return Ok(new EventViewModel() { Id = Guid.NewGuid(), Name = "Test" });

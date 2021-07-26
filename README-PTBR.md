@@ -41,13 +41,16 @@ Termine com um exemplo de como obter dados do sistema ou como usá-los para uma 
 
 //Explicar como executar os testes automatizados para este sistema.
 
-### 🔩 Analise os testes de ponta a ponta
+### 🔩 Retornos da API
 
-//Explique que eles verificam esses testes e porquê.
+A API retorna os seguintes status:
+200 OK
+400 Payload invalido
+401 Token inválido/Nao autenticado
+402 Requerida confirmação ou informação
+403 Acesso negado
+409 Registro duplicado/Regras de negocio
 
-```
-
-```
 
 ### ⌨️ E testes de estilo de codificação
 
@@ -60,7 +63,7 @@ Termine com um exemplo de como obter dados do sistema ou como usá-los para uma 
 
 ## 🛠️ Construído com
 
-* [.Net 5](https://docs.microsoft.com/pt-br/dotnet/core/dotnet-five) - Framework
+* [.Net](https://docs.microsoft.com/pt-br/dotnet/core/dotnet-five) - Framework .Net 5 com Web API
 * [Entity framework](https://docs.microsoft.com/pt-br/ef/) - ORM
 * [AutoMapper](https://automapper.org/) - Mapeamento Entity - ViewModel
 
