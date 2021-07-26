@@ -1,5 +1,7 @@
 ﻿using Domain.Model;
 using Domain.Model.Payload;
+using Infra.Repository.Base;
+using Infra.Repository.Context;
 using Infra.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -9,17 +11,11 @@ using System.Threading.Tasks;
 
 namespace Infra.Repository
 {
-    public class EventRepository : IEventRepository
+    public class EventRepository : BaseRepository<Event>, IEventRepository
     {
-        public Event Create(Guid id, EventPayload payload)
+        public EventRepository(EventContext context) : base(context)
         {
-            var entity = new Event()
-            {
-                Id = Guid.NewGuid(),
-                Name = "Test"
-            };
 
-            return entity;
-        }        
+        }
     }
 }

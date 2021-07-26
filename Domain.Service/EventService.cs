@@ -26,15 +26,28 @@ namespace Domain.Service
 
         public EventViewModel Create(Guid id, EventPayload payload)
         {
-            var entity = new Event()
-            { 
-                Id = Guid.NewGuid(), 
-                Name = "Test" 
-            };
-
-            var newEntity = EventRepository.Create(id, payload);
-            var viewModel = Mapper.Map<EventViewModel>(newEntity);           
+            var newEntity = Mapper.Map<Event>(payload);
+            var entity = EventRepository.Create(newEntity);
+            var viewModel = Mapper.Map<EventViewModel>(entity);
             return viewModel;
+        }        
+
+        public EventViewModel Read(Guid id)
+        {
+            var entity = EventRepository.Read(id);
+            var viewModel = Mapper.Map<EventViewModel>(entity);
+            return viewModel;
+        }
+        public void Update(Guid id, EventPayload payload)
+        {
+            var newEntity = Mapper.Map<Event>(payload);
+            newEntity.Id = id;
+            EventRepository.Update(newEntity);
+        }
+
+        public void Delete(Guid id)
+        {
+            EventRepository.Delete(id);
         }
     }
 }

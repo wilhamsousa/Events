@@ -24,7 +24,7 @@ Informar os dados de acesso do banco de dados em appsettings.json
 Exemplo:
 ```
 "ConnectionStrings": {
-    "DatabaseConnectionLocalDB": "Server=(localdb)\\MSSQLLocalDB;Initial Catalog=Event;Persist Security Info=True;MultipleActiveResultSets=True;Trusted_Connection=True;Connection Timeout=30;"
+    "DatabaseConnection": "Server=(localdb)\\MSSQLLocalDB;Initial Catalog=db_Event;Persist Security Info=True;MultipleActiveResultSets=True;Trusted_Connection=True;Connection Timeout=30;"
   }
 ```
 

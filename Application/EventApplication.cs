@@ -20,5 +20,21 @@ namespace Application
             var result = EventService.Create(id, payload);
             return result;
         }
+
+        public void Update(Guid id, EventPayload payload)
+        {
+            EventService.Update(id, payload);
+        }
+
+        public EventViewModel Read(Guid id)
+        {
+            var result = EventService.Read(id);
+            return result;
+        }
+
+        public void Delete(Guid id)
+        {
+            EventService.Delete(id);
+        }
     }
 }

@@ -47,13 +47,21 @@ namespace Events.API.Controllers
         /// Consultar evento
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="payload"></param>
         /// <returns></returns>
         [Route("{id:guid}/[action]")]
         [HttpGet]
         public ActionResult Read(Guid id)
         {
-            return Ok(new EventViewModel() { Id = Guid.NewGuid(), Name = "Test" });
+            try
+            {
+                var data = eventApplication.Read(id);
+                var result = new ResponseAPI<EventViewModel>(data);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return Conflict(new ResponseAPI<EventViewModel>(null, false, e.Message));
+            }
         }
 
         /// <summary>
@@ -65,7 +73,16 @@ namespace Events.API.Controllers
         [HttpPut]
         public ActionResult Update(Guid id, EventPayload payload)
         {
-            return Ok(new EventViewModel() { Id = Guid.NewGuid(), Name = "Test" });
+            try
+            {
+                eventApplication.Update(id, payload);
+                var result = new ResponseAPI<EventViewModel>(null);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return Conflict(new ResponseAPI<EventViewModel>(null, false, e.Message));
+            }
         }
 
         /// <summary>
@@ -76,7 +93,16 @@ namespace Events.API.Controllers
         [HttpDelete]
         public ActionResult Delete(Guid id)
         {
-            return Ok(new EventViewModel() { Id = Guid.NewGuid(), Name = "Test" });
+            try
+            {
+                eventApplication.Delete(id);
+                var result = new ResponseAPI<EventViewModel>(null);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return Conflict(new ResponseAPI<EventViewModel>(null, false, e.Message));
+            }
         }
     }
 }

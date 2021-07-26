@@ -1,5 +1,6 @@
 ﻿using Domain.Model;
 using Domain.Model.Payload;
+using Infra.Repository.Interface.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infra.Repository.Interface
 {
-    public interface IEventRepository
+    public interface IEventRepository : IBaseRepository<Event>
     {
-        Event Create(Guid id, EventPayload payload);
     }
 }

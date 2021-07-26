@@ -11,7 +11,7 @@ namespace Infra.Repository.Context.Data
             new Event()
                 {
                     Id = Guid.Parse("41fc88fd-849e-49d1-bd39-e251d872cb90"),
-                    Name = "Churrasco de aniversariantes do mês"
+                    Description = "Churrasco de aniversariantes do mês"
                 }     
 
         };

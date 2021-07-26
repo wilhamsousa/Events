@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Domain.Model.Payload;
 
 namespace Domain.Service.Mapping
 {
@@ -14,6 +15,7 @@ namespace Domain.Service.Mapping
         public MappingProfiles()
         {
             CreateMap<Event, EventViewModel>().ReverseMap();
+            CreateMap<Event, EventPayload>().ReverseMap();
         }
     }
 }

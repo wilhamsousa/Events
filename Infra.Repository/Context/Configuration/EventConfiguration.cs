@@ -18,7 +18,7 @@ namespace Infra.Repository.Context.Configuration
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Name)
+                entity.Property(e => e.Description)
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
