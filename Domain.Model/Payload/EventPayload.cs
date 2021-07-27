@@ -10,5 +10,8 @@ namespace Domain.Model.Payload
     {
         public string Description { get; set; }
         public string DateTime { get; set; }
+        public string Observation { get; set; }
+        public string PriceWithDrink { get; set; }
+        public string PriceWithoutDrink { get; set; }
     }
 }

@@ -44,6 +44,18 @@ namespace Domain.Service
             if (!Validators.IsDateTime(payload.DateTime))
                 throw new Exception("Data inválida.");
 
+            if (string.IsNullOrEmpty(payload.PriceWithDrink))
+                throw new Exception("Preço com bebida não informado.");
+
+            if (string.IsNullOrEmpty(payload.PriceWithoutDrink))
+                throw new Exception("Preço sem bebida não informado.");
+
+            if (!Validators.IsNumber(payload.PriceWithDrink) || Decimal.Parse(payload.PriceWithDrink) < 0)
+                throw new Exception("Preço com bebida inválido.");
+
+            if (!Validators.IsNumber(payload.PriceWithoutDrink) || Decimal.Parse(payload.PriceWithoutDrink) < 0)
+                throw new Exception("Preço sem bebida inválido.");
+
             var exist = EventRepository.Exists(x => x.Description == payload.Description);
             if (exist)
                 throw new Exception("Este evento já existe.");
@@ -84,6 +96,18 @@ namespace Domain.Service
 
             if (!Validators.IsDateTime(payload.DateTime))
                 throw new Exception("Data inválida.");
+
+            if (string.IsNullOrEmpty(payload.PriceWithDrink))
+                throw new Exception("Preço com bebida não informado.");
+
+            if (string.IsNullOrEmpty(payload.PriceWithoutDrink))
+                throw new Exception("Preço sem bebida não informado.");
+
+            if (!Validators.IsNumber(payload.PriceWithDrink) || Decimal.Parse(payload.PriceWithDrink) < 0)
+                throw new Exception("Preço com bebida inválido.");
+
+            if (!Validators.IsNumber(payload.PriceWithoutDrink) || Decimal.Parse(payload.PriceWithoutDrink) < 0)
+                throw new Exception("Preço sem bebida inválido.");
 
             var exist = EventRepository.Exists(x => x.Id == id);
             if (!exist)
