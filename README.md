@@ -28,18 +28,16 @@ Exemplo:
   }
 ```
 
-E no terminal executar o build e a execução:
-
+No Visual Studio, em package manager console executar o comando abaixo para criar a base de dados:
 ```
-cd {diretório da solução}\1 - API\Events.API
-dotnet run
+update-database
 ```
 
-Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
+Em seguida executar a aplicação Events.API
 
 ## ⚙️ Executando os testes
 
-//Explicar como executar os testes automatizados para este sistema.
+
 
 ### 🔩 Retornos da API
 
@@ -50,15 +48,6 @@ A API retorna os seguintes status:
 402 Requerida confirmação ou informação
 403 Acesso negado
 409 Registro duplicado/Regras de negocio
-
-
-### ⌨️ E testes de estilo de codificação
-
-//Explique que eles verificam esses testes e porquê.
-
-```
-
-```
 
 
 ## 🛠️ Construído com
@@ -78,7 +67,7 @@ A API retorna os seguintes status:
 
 ## ✒️ Autor
 
-* **Fullstack developer** - *Trabalho Inicial* - [Wilham Ezequiel de Sousa ](https://www.linkedin.com/in/wilham-ezequiel-de-sousa-22373696/)
+* **Fullstack developer .Net** - *LinkedIn* - [Wilham Ezequiel de Sousa ](https://www.linkedin.com/in/wilham-ezequiel-de-sousa-22373696/)
 
 ## 📄 Licença
 
