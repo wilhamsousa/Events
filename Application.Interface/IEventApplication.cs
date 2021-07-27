@@ -14,5 +14,6 @@ namespace Application.Interface
         EventViewModel Read(Guid id);
         void Update(Guid id, EventPayload payload);
         void Delete(Guid id);
+        IEnumerable<EventViewModel> List();
     }
 }

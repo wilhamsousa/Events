@@ -65,6 +65,26 @@ namespace Events.API.Controllers
         }
 
         /// <summary>
+        /// Listar eventos
+        /// </summary>
+        /// <returns></returns>
+        [Route("[action]")]
+        [HttpGet]
+        public ActionResult List()
+        {
+            try
+            {
+                var data = eventApplication.List();
+                var result = new ResponseAPI<IEnumerable<EventViewModel>>(data);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return Conflict(new ResponseAPI<EventViewModel>(null, false, e.Message));
+            }
+        }
+
+        /// <summary>
         /// Editar evento
         /// </summary>
         /// <param name="id"></param>

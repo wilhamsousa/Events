@@ -82,7 +82,17 @@ namespace Infra.Repository.Base
 
             return entity;
         }
-        
+
+        public virtual IEnumerable<TEntity> List()
+        {
+            return Context.Set<TEntity>().AsNoTracking().ToList();
+        }
+
+        public virtual IEnumerable<TEntity> List(Expression<Func<TEntity, bool>> match)
+        {
+            return Context.Set<TEntity>().AsNoTracking().Where(match).ToList();
+        }
+
         public virtual bool Exists(Expression<Func<TEntity, bool>> predicate)
         {
             return Context.Set<TEntity>().Any(predicate);

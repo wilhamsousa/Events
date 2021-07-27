@@ -16,6 +16,8 @@ namespace Infra.Repository.Interface.Base
         TEntity Read(Guid id);
         TEntity Read(Expression<Func<TEntity, bool>> match);
         TEntity ReadFull(Guid id);
+        IEnumerable<TEntity> List();
+        IEnumerable<TEntity> List(Expression<Func<TEntity, bool>> match);
         bool Exists(Expression<Func<TEntity, bool>> predicate);
         long Count(Expression<Func<TEntity, bool>> predicate);
         long Count();

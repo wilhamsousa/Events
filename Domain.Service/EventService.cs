@@ -49,5 +49,12 @@ namespace Domain.Service
         {
             EventRepository.Delete(id);
         }
+
+        public IEnumerable<EventViewModel> List()
+        {
+            var entity = EventRepository.List();
+            var viewModel = Mapper.Map<IEnumerable<EventViewModel>>(entity);
+            return viewModel;
+        }
     }
 }

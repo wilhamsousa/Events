@@ -3,6 +3,7 @@ using Domain.Model.Payload;
 using Domain.Model.ViewModel;
 using Domain.Service.Interface;
 using System;
+using System.Collections.Generic;
 
 namespace Application
 {
@@ -35,6 +36,12 @@ namespace Application
         public void Delete(Guid id)
         {
             EventService.Delete(id);
+        }
+
+        public IEnumerable<EventViewModel> List()
+        {
+            var result = EventService.List();
+            return result;
         }
     }
 }

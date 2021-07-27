@@ -14,5 +14,6 @@ namespace Domain.Service.Interface
         void Update(Guid id, EventPayload payload);
         EventViewModel Read(Guid id);
         void Delete(Guid id);
+        IEnumerable<EventViewModel> List();
     }
 }
