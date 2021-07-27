@@ -5,15 +5,15 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Events.API", "Events.API\Events.API.csproj", "{0BB4ADF9-3543-49DC-A743-2420D62E741F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Model", "Domain.Model\Domain.Model.csproj", "{4DD88FC4-9EEF-48AF-9B09-6A2137A01868}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Model", "Domain.Model\Domain.Model.csproj", "{4DD88FC4-9EEF-48AF-9B09-6A2137A01868}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Service", "Domain.Service\Domain.Service.csproj", "{ABE1E9BB-E871-492D-AF7A-45DC48DA5090}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Service", "Domain.Service\Domain.Service.csproj", "{ABE1E9BB-E871-492D-AF7A-45DC48DA5090}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Service.Interface", "Domain.Service.Interface\Domain.Service.Interface.csproj", "{98D28F70-624A-440C-A05B-25F344A6CA0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Service.Interface", "Domain.Service.Interface\Domain.Service.Interface.csproj", "{98D28F70-624A-440C-A05B-25F344A6CA0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{9E2CDE6E-B3C2-4894-BA09-9EE746C82FD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{9E2CDE6E-B3C2-4894-BA09-9EE746C82FD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Interface", "Application.Interface\Application.Interface.csproj", "{EFD9B501-FDD0-409A-92CF-930A38B08DD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Interface", "Application.Interface\Application.Interface.csproj", "{EFD9B501-FDD0-409A-92CF-930A38B08DD7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - API", "1 - API", "{589B7E25-9C87-4B2C-9A8D-B907AA4CB916}"
 EndProject
@@ -23,9 +23,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{BE25C5B3-5D99-4AAC-BECD-F8F139D45FB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Repository", "Infra.Repository\Infra.Repository.csproj", "{8C17BB2B-5AE7-4F16-A995-EB2533EA7D21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.Repository", "Infra.Repository\Infra.Repository.csproj", "{8C17BB2B-5AE7-4F16-A995-EB2533EA7D21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Repository.Interface", "Infra.Repository.Interface\Infra.Repository.Interface.csproj", "{CA4A4320-2934-4506-A594-7752BE2ACFBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.Repository.Interface", "Infra.Repository.Interface\Infra.Repository.Interface.csproj", "{CA4A4320-2934-4506-A594-7752BE2ACFBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Helpers", "Infra.Helpers\Infra.Helpers.csproj", "{87834FCF-1135-4E80-8303-C0B005BE4E8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{CA4A4320-2934-4506-A594-7752BE2ACFBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA4A4320-2934-4506-A594-7752BE2ACFBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA4A4320-2934-4506-A594-7752BE2ACFBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87834FCF-1135-4E80-8303-C0B005BE4E8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87834FCF-1135-4E80-8303-C0B005BE4E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87834FCF-1135-4E80-8303-C0B005BE4E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87834FCF-1135-4E80-8303-C0B005BE4E8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +84,7 @@ Global
 		{EFD9B501-FDD0-409A-92CF-930A38B08DD7} = {434D2B9A-5700-4A30-81C6-A349C250DDC0}
 		{8C17BB2B-5AE7-4F16-A995-EB2533EA7D21} = {BE25C5B3-5D99-4AAC-BECD-F8F139D45FB4}
 		{CA4A4320-2934-4506-A594-7752BE2ACFBE} = {BE25C5B3-5D99-4AAC-BECD-F8F139D45FB4}
+		{87834FCF-1135-4E80-8303-C0B005BE4E8F} = {BE25C5B3-5D99-4AAC-BECD-F8F139D45FB4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0C1445B9-ADE8-47EB-8C0E-927DB18ECEF0}

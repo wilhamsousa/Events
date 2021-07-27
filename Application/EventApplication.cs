@@ -16,9 +16,9 @@ namespace Application
             EventService = eventService;
         }
 
-        public EventViewModel Create(Guid id, EventPayload payload)
+        public EventViewModel Create(EventPayload payload)
         {
-            var result = EventService.Create(id, payload);
+            var result = EventService.Create(payload);
             return result;
         }
 
@@ -41,6 +41,12 @@ namespace Application
         public IEnumerable<EventViewModel> List()
         {
             var result = EventService.List();
+            return result;
+        }
+
+        public IEnumerable<DashboardViewModel> Dashboard()
+        {
+            var result = EventService.Dashboard();
             return result;
         }
     }

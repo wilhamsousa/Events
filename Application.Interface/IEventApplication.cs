@@ -10,10 +10,11 @@ namespace Application.Interface
 {
     public interface IEventApplication
     {
-        EventViewModel Create(Guid id, EventPayload payload);
+        EventViewModel Create(EventPayload payload);
         EventViewModel Read(Guid id);
         void Update(Guid id, EventPayload payload);
         void Delete(Guid id);
         IEnumerable<EventViewModel> List();
+        IEnumerable<DashboardViewModel> Dashboard();
     }
 }

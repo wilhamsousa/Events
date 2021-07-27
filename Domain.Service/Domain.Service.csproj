@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Domain.Model\Domain.Model.csproj" />
     <ProjectReference Include="..\Domain.Service.Interface\Domain.Service.Interface.csproj" />
+    <ProjectReference Include="..\Infra.Helpers\Infra.Helpers.csproj" />
     <ProjectReference Include="..\Infra.Repository.Interface\Infra.Repository.Interface.csproj" />
   </ItemGroup>
 

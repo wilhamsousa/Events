@@ -3,6 +3,7 @@ using Domain.Model.Entity;
 using Domain.Model.Payload;
 using Domain.Model.ViewModel;
 using Domain.Service.Interface;
+using Infra.Helpers;
 using Infra.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -21,30 +22,86 @@ namespace Domain.Service
             Mapper = mapper;
         }
 
-        public EventViewModel Create(Guid id, EventPayload payload)
+        public EventViewModel Create(EventPayload payload)
         {
+            CreateValidations(payload);
             var newEntity = Mapper.Map<Event>(payload);
             var entity = EventRepository.Create(newEntity);
             var viewModel = Mapper.Map<EventViewModel>(entity);
             return viewModel;
-        }        
+        }
+
+        private void CreateValidations(EventPayload payload)
+        {
+            if (string.IsNullOrEmpty(payload.Description))
+                throw new Exception("Descrição não informada.");
+
+            if (string.IsNullOrEmpty(payload.DateTime))
+                throw new Exception("Data não informada.");
+
+            if (!Validators.IsDateTime(payload.DateTime))
+                throw new Exception("Data inválida.");
+
+            var exist = EventRepository.Exists(x => x.Description == payload.Description);
+            if (exist)
+                throw new Exception("Este evento já existe.");
+        }
 
         public EventViewModel Read(Guid id)
         {
+            ReadValidations(id);
             var entity = EventRepository.Read(id);
             var viewModel = Mapper.Map<EventViewModel>(entity);
             return viewModel;
         }
+
+        private void ReadValidations(Guid id)
+        {
+            if (id == Guid.Empty)
+                throw new Exception("Id não informado.");
+        }
+
         public void Update(Guid id, EventPayload payload)
         {
+            UpdateValidations(id, payload);
             var newEntity = Mapper.Map<Event>(payload);
             newEntity.Id = id;
             EventRepository.Update(newEntity);
         }
 
+        private void UpdateValidations(Guid id, EventPayload payload)
+        {
+            if (id == Guid.Empty)
+                throw new Exception("Id não informado.");
+
+            if (string.IsNullOrEmpty(payload.Description))
+                throw new Exception("Descrição não informada.");
+
+            if (string.IsNullOrEmpty(payload.DateTime))
+                throw new Exception("Data não informada.");
+
+            if (!Validators.IsDateTime(payload.DateTime))
+                throw new Exception("Data inválida.");
+
+            var exist = EventRepository.Exists(x => x.Id == id);
+            if (!exist)
+                throw new Exception("Registro não encontrado.");
+        }
+
         public void Delete(Guid id)
         {
+            DeleteValidations(id);
             EventRepository.Delete(id);
+        }
+
+        private void DeleteValidations(Guid id)
+        {
+            if (id == Guid.Empty)
+                throw new Exception("Id não informado.");
+
+            var exist = EventRepository.Exists(x => x.Id == id);
+            if (!exist)
+                throw new Exception("Registro não encontrado.");
         }
 
         public IEnumerable<EventViewModel> List()
@@ -52,6 +109,12 @@ namespace Domain.Service
             var entity = EventRepository.List();
             var viewModel = Mapper.Map<IEnumerable<EventViewModel>>(entity);
             return viewModel;
+        }
+
+        public IEnumerable<DashboardViewModel> Dashboard()
+        {
+            var result = EventRepository.Dashboard();
+            return result;
         }
     }
 }

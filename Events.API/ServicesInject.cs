@@ -14,15 +14,18 @@ namespace BigBrain.Corujinha.API
         {
             #region Application
             services.AddTransient(typeof(IEventApplication), typeof(EventApplication));
+            services.AddTransient(typeof(IGuestApplication), typeof(GuestApplication));
             
             #endregion
 
             #region Service
             services.AddTransient(typeof(IEventService), typeof(EventService));
+            services.AddTransient(typeof(IGuestService), typeof(GuestService));
             #endregion
 
             #region Infra
             services.AddTransient(typeof(IEventRepository), typeof(EventRepository));
+            services.AddTransient(typeof(IGuestRepository), typeof(GuestRepository));
             #endregion
         }
     }

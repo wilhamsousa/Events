@@ -10,10 +10,11 @@ namespace Domain.Service.Interface
 {
     public interface IEventService
     {
-        EventViewModel Create(Guid id, EventPayload payload);
+        EventViewModel Create(EventPayload payload);
         void Update(Guid id, EventPayload payload);
         EventViewModel Read(Guid id);
         void Delete(Guid id);
         IEnumerable<EventViewModel> List();
+        IEnumerable<DashboardViewModel> Dashboard();
     }
 }

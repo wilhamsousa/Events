@@ -25,15 +25,14 @@ namespace Events.API.Controllers
         /// <summary>
         /// Criar evento
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="payload"></param>
-        [Route("{id:guid}/[action]")]
+        [Route("[action]")]
         [HttpPost]
-        public ActionResult Create(Guid id, EventPayload payload)
+        public ActionResult Create(EventPayload payload)
         {
             try
             {
-                var data = eventApplication.Create(id, payload);
+                var data = eventApplication.Create(payload);
                 var result = new ResponseAPI<EventViewModel>(data);
                 return Ok(result);
             }
@@ -122,6 +121,26 @@ namespace Events.API.Controllers
             catch (Exception e)
             {
                 return Conflict(new ResponseAPI<EventViewModel>(null, false, e.Message));
+            }
+        }
+
+        /// <summary>
+        /// Painel geral
+        /// </summary>
+        /// <returns></returns>
+        [Route("[action]")]
+        [HttpGet]
+        public ActionResult Dashboard()
+        {
+            try
+            {
+                var data = eventApplication.Dashboard();
+                var result = new ResponseAPI<IEnumerable<DashboardViewModel>>(data);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return Conflict(new ResponseAPI<DashboardViewModel>(null, false, e.Message));
             }
         }
     }

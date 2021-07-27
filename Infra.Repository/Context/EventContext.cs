@@ -20,6 +20,7 @@ namespace Infra.Repository.Context
         }
 
         public virtual DbSet<Event> Event { get; set; }
+        public virtual DbSet<Guest> Guest { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
