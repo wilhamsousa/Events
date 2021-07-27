@@ -15,11 +15,13 @@ namespace Domain.Service
     {
         private readonly IEventRepository EventRepository;
         private readonly IMapper Mapper;
+        private readonly IServiceProvider ServiceProvider;
 
         public EventService(IServiceProvider serviceProvider, IMapper mapper, IEventRepository eventRepository)
         {
             EventRepository = eventRepository;
             Mapper = mapper;
+            ServiceProvider = serviceProvider;
         }
 
         public EventViewModel Create(EventPayload payload)

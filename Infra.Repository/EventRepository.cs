@@ -30,7 +30,7 @@ namespace Infra.Repository
                               Description = ge.Key.Description,
                               DateTime = ge.Key.DateTime.ToString(),
                               TotalValue = ge.Sum(s => s.Payment??0),
-                              GuestCount = ge.Count()
+                              GuestCount = ge.Count(s => s.Name != null)
                           }
                 ).AsNoTracking().ToList();
 

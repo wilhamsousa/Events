@@ -8,6 +8,7 @@ namespace Domain.Model.ViewModel
 {
     public class GuestViewModel
     {
+        public Guid EventId { get; set; }
         public Guid Id { get; set; }
         public string Name { get; set; }
         public decimal? Payment { get; set; }
