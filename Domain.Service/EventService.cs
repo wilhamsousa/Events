@@ -1,14 +1,11 @@
 ﻿using AutoMapper;
-using Domain.Model;
+using Domain.Model.Entity;
 using Domain.Model.Payload;
 using Domain.Model.ViewModel;
 using Domain.Service.Interface;
 using Infra.Repository.Interface;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Service
 {

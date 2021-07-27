@@ -1,4 +1,4 @@
-﻿using Domain.Model;
+﻿using Domain.Model.Entity;
 using System;
 using System.Collections.Generic;
 
@@ -11,7 +11,9 @@ namespace Infra.Repository.Context.Data
             new Event()
                 {
                     Id = Guid.Parse("41fc88fd-849e-49d1-bd39-e251d872cb90"),
-                    Description = "Churrasco de aniversariantes do mês"
+                    Description = "Churrasco de aniversariantes do mês",
+                    PriceWithDrink = 100,
+                    PriceWithoutDrink = 50
                 }     
 
         };

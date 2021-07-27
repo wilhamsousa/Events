@@ -1,8 +1,7 @@
 ﻿using System;
-using Domain.Model;
+using Domain.Model.Entity;
 using Infra.Repository.Context.Configuration;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
 
 #nullable disable
@@ -40,7 +39,10 @@ namespace Infra.Repository.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+            
             new EventConfiguration().Configure(modelBuilder);
+            new GuestConfiguration().Configure(modelBuilder);
+
             OnModelCreatingPartial(modelBuilder);
         }
 

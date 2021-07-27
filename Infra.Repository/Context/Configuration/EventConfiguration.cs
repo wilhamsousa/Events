@@ -1,12 +1,7 @@
-﻿using Domain.Model;
+﻿using Domain.Model.Entity;
 using Infra.Repository.Context.Base;
 using Infra.Repository.Context.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infra.Repository.Context.Configuration
 {
@@ -22,6 +17,19 @@ namespace Infra.Repository.Context.Configuration
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Observation)
+                    .IsRequired(false)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PriceWithDrink)
+                    .IsRequired()
+                    .HasPrecision(9, 2);
+
+                entity.Property(e => e.PriceWithoutDrink)
+                    .IsRequired()
+                    .HasPrecision(9, 2);
 
             });
 
