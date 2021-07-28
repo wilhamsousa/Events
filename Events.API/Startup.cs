@@ -49,7 +49,7 @@ namespace Events.API
                 .UseSqlServer(Configuration.GetConnectionString("DatabaseConnection"))
                 .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
 
-            ServicesInject.Execute(services);
+            ServicesLocator.Execute(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

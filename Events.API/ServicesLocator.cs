@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BigBrain.Corujinha.API
 {
-    public static class ServicesInject
+    public static class ServicesLocator
     {
         public static void Execute(IServiceCollection services)
         {
