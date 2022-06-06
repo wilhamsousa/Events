@@ -1,5 +1,5 @@
 ﻿using Application.Interface;
-using Domain.Model.Payload;
+using Domain.Model.InputModel;
 using Domain.Model.ViewModel;
 using Domain.Service.Interface;
 using System;
@@ -16,18 +16,18 @@ namespace Application
             EventService = eventService;
         }
 
-        public EventViewModel Create(EventPayload payload)
+        public Domain.Model.ViewModel.Event Create(Domain.Model.InputModel.Event payload)
         {
             var result = EventService.Create(payload);
             return result;
         }
 
-        public void Update(Guid id, EventPayload payload)
+        public void Update(Guid id, Domain.Model.InputModel.Event payload)
         {
             EventService.Update(id, payload);
         }
 
-        public EventViewModel Read(Guid id)
+        public Domain.Model.ViewModel.Event Read(Guid id)
         {
             var result = EventService.Read(id);
             return result;
@@ -38,13 +38,13 @@ namespace Application
             EventService.Delete(id);
         }
 
-        public IEnumerable<EventViewModel> List()
+        public IEnumerable<Domain.Model.ViewModel.Event> List()
         {
             var result = EventService.List();
             return result;
         }
 
-        public IEnumerable<DashboardViewModel> Dashboard()
+        public IEnumerable<Dashboard> Dashboard()
         {
             var result = EventService.Dashboard();
             return result;

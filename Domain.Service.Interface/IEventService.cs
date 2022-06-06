@@ -1,4 +1,4 @@
-﻿using Domain.Model.Payload;
+﻿using Domain.Model.InputModel;
 using Domain.Model.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -10,11 +10,11 @@ namespace Domain.Service.Interface
 {
     public interface IEventService
     {
-        EventViewModel Create(EventPayload payload);
-        void Update(Guid id, EventPayload payload);
-        EventViewModel Read(Guid id);
+        Model.ViewModel.Event Create(Model.InputModel.Event payload);
+        void Update(Guid id, Model.InputModel.Event payload);
+        Model.ViewModel.Event Read(Guid id);
         void Delete(Guid id);
-        IEnumerable<EventViewModel> List();
-        IEnumerable<DashboardViewModel> Dashboard();
+        IEnumerable<Model.ViewModel.Event> List();
+        IEnumerable<Dashboard> Dashboard();
     }
 }

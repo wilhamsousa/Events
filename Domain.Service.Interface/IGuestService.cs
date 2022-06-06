@@ -1,4 +1,4 @@
-﻿using Domain.Model.Payload;
+﻿using Domain.Model.InputModel;
 using Domain.Model.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -10,10 +10,10 @@ namespace Domain.Service.Interface
 {
     public interface IGuestService
     {
-        GuestViewModel Create(GuestPayload payload);
-        void Update(Guid id, GuestPayload payload);
-        GuestViewModel Read(Guid id);
+        Model.ViewModel.Guest Create(Model.InputModel.Guest payload);
+        void Update(Guid id, Model.InputModel.Guest payload);
+        Model.ViewModel.Guest Read(Guid id);
         void Delete(Guid id);
-        IEnumerable<GuestViewModel> List();
+        IEnumerable<Model.ViewModel.Guest> List();
     }
 }

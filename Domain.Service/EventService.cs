@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Model.Entity;
-using Domain.Model.Payload;
+using Domain.Model.InputModel;
 using Domain.Model.ViewModel;
 using Domain.Service.Interface;
 using Infra.Helpers;
@@ -24,16 +24,16 @@ namespace Domain.Service
             ServiceProvider = serviceProvider;
         }
 
-        public EventViewModel Create(EventPayload payload)
+        public Model.ViewModel.Event Create(Model.InputModel.Event payload)
         {
             CreateValidations(payload);
-            var newEntity = Mapper.Map<Event>(payload);
+            var newEntity = Mapper.Map<Model.Entity.Event>(payload);
             var entity = EventRepository.Create(newEntity);
-            var viewModel = Mapper.Map<EventViewModel>(entity);
+            var viewModel = Mapper.Map<Model.ViewModel.Event>(entity);
             return viewModel;
         }
 
-        private void CreateValidations(EventPayload payload)
+        private void CreateValidations(Model.InputModel.Event payload)
         {
             if (string.IsNullOrEmpty(payload.Description))
                 throw new Exception("Descrição não informada.");
@@ -61,11 +61,11 @@ namespace Domain.Service
                 throw new Exception("Este evento já existe.");
         }
 
-        public EventViewModel Read(Guid id)
+        public Model.ViewModel.Event Read(Guid id)
         {
             ReadValidations(id);
             var entity = EventRepository.Read(id);
-            var viewModel = Mapper.Map<EventViewModel>(entity);
+            var viewModel = Mapper.Map<Model.ViewModel.Event>(entity);
             return viewModel;
         }
 
@@ -75,15 +75,15 @@ namespace Domain.Service
                 throw new Exception("Id não informado.");
         }
 
-        public void Update(Guid id, EventPayload payload)
+        public void Update(Guid id, Model.InputModel.Event payload)
         {
             UpdateValidations(id, payload);
-            var newEntity = Mapper.Map<Event>(payload);
+            var newEntity = Mapper.Map<Model.Entity.Event>(payload);
             newEntity.Id = id;
             EventRepository.Update(newEntity);
         }
 
-        private void UpdateValidations(Guid id, EventPayload payload)
+        private void UpdateValidations(Guid id, Model.InputModel.Event payload)
         {
             if (id == Guid.Empty)
                 throw new Exception("Id não informado.");
@@ -130,14 +130,14 @@ namespace Domain.Service
                 throw new Exception("Registro não encontrado.");
         }
 
-        public IEnumerable<EventViewModel> List()
+        public IEnumerable<Model.ViewModel.Event> List()
         {
             var entity = EventRepository.List();
-            var viewModel = Mapper.Map<IEnumerable<EventViewModel>>(entity);
+            var viewModel = Mapper.Map<IEnumerable<Model.ViewModel.Event>>(entity);
             return viewModel;
         }
 
-        public IEnumerable<DashboardViewModel> Dashboard()
+        public IEnumerable<Dashboard> Dashboard()
         {
             var result = EventRepository.Dashboard();
             return result;

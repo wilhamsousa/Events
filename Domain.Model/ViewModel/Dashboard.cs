@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Model.Payload
+namespace Domain.Model.ViewModel
 {
-    public class EventPayload
+    public class Dashboard
     {
+        public Guid EventId { get; set; }
         public string Description { get; set; }
         public string DateTime { get; set; }
-        public string Observation { get; set; }
-        public string PriceWithDrink { get; set; }
-        public string PriceWithoutDrink { get; set; }
+        public int GuestCount { get; set; }
+        public decimal TotalValue { get; set; }
     }
 }

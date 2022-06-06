@@ -1,6 +1,6 @@
 ﻿using Application;
 using Application.Interface;
-using Domain.Model.Payload;
+using Domain.Model.InputModel;
 using Domain.Model.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,17 +28,17 @@ namespace Events.API.Controllers
         /// <param name="payload"></param>
         [Route("[action]")]
         [HttpPost]
-        public ActionResult Create(EventPayload payload)
+        public ActionResult Create(Domain.Model.InputModel.Event payload)
         {
             try
             {
                 var data = eventApplication.Create(payload);
-                var result = new ResponseAPI<EventViewModel>(data);
+                var result = new ResponseAPI<Domain.Model.ViewModel.Event>(data);
                 return Ok(result);
             }
             catch (Exception e)
             {
-                return Conflict(new ResponseAPI<EventViewModel>(null, false, e.Message));
+                return base.Conflict(new ResponseAPI<Domain.Model.ViewModel.Event>(null, false, e.Message));
             }
         }
 
@@ -54,12 +54,12 @@ namespace Events.API.Controllers
             try
             {
                 var data = eventApplication.Read(id);
-                var result = new ResponseAPI<EventViewModel>(data);
+                var result = new ResponseAPI<Domain.Model.ViewModel.Event>(data);
                 return Ok(result);
             }
             catch (Exception e)
             {
-                return Conflict(new ResponseAPI<EventViewModel>(null, false, e.Message));
+                return base.Conflict(new ResponseAPI<Domain.Model.ViewModel.Event>(null, false, e.Message));
             }
         }
 
@@ -74,12 +74,12 @@ namespace Events.API.Controllers
             try
             {
                 var data = eventApplication.List();
-                var result = new ResponseAPI<IEnumerable<EventViewModel>>(data);
+                var result = new ResponseAPI<IEnumerable<Domain.Model.ViewModel.Event>>(data);
                 return Ok(result);
             }
             catch (Exception e)
             {
-                return Conflict(new ResponseAPI<EventViewModel>(null, false, e.Message));
+                return base.Conflict(new ResponseAPI<Domain.Model.ViewModel.Event>(null, false, e.Message));
             }
         }
 
@@ -90,17 +90,17 @@ namespace Events.API.Controllers
         /// <param name="payload"></param>
         [Route("{id:guid}/[action]")]
         [HttpPut]
-        public ActionResult Update(Guid id, EventPayload payload)
+        public ActionResult Update(Guid id, Domain.Model.InputModel.Event payload)
         {
             try
             {
                 eventApplication.Update(id, payload);
-                var result = new ResponseAPI<EventViewModel>(null);
+                var result = new ResponseAPI<Domain.Model.ViewModel.Event>(null);
                 return Ok(result);
             }
             catch (Exception e)
             {
-                return Conflict(new ResponseAPI<EventViewModel>(null, false, e.Message));
+                return base.Conflict(new ResponseAPI<Domain.Model.ViewModel.Event>(null, false, e.Message));
             }
         }
 
@@ -115,12 +115,12 @@ namespace Events.API.Controllers
             try
             {
                 eventApplication.Delete(id);
-                var result = new ResponseAPI<EventViewModel>(null);
+                var result = new ResponseAPI<Domain.Model.ViewModel.Event>(null);
                 return Ok(result);
             }
             catch (Exception e)
             {
-                return Conflict(new ResponseAPI<EventViewModel>(null, false, e.Message));
+                return base.Conflict(new ResponseAPI<Domain.Model.ViewModel.Event>(null, false, e.Message));
             }
         }
 
@@ -135,12 +135,12 @@ namespace Events.API.Controllers
             try
             {
                 var data = eventApplication.Dashboard();
-                var result = new ResponseAPI<IEnumerable<DashboardViewModel>>(data);
+                var result = new ResponseAPI<IEnumerable<Dashboard>>(data);
                 return Ok(result);
             }
             catch (Exception e)
             {
-                return Conflict(new ResponseAPI<DashboardViewModel>(null, false, e.Message));
+                return Conflict(new ResponseAPI<Dashboard>(null, false, e.Message));
             }
         }
     }

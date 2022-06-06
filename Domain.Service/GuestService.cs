@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Model.Entity;
-using Domain.Model.Payload;
+using Domain.Model.InputModel;
 using Domain.Model.ViewModel;
 using Domain.Service.Interface;
 using Infra.Repository.Interface;
@@ -23,16 +23,16 @@ namespace Domain.Service
             ServiceProvider = serviceProvider;
         }
 
-        public GuestViewModel Create(GuestPayload payload)
+        public Model.ViewModel.Guest Create(Model.InputModel.Guest payload)
         {
             CreateValidations(payload);
-            var newEntity = Mapper.Map<Guest>(payload);
+            var newEntity = Mapper.Map<Model.Entity.Guest>(payload);
             var entity = GuestRepository.Create(newEntity);
-            var viewModel = Mapper.Map<GuestViewModel>(entity);
+            var viewModel = Mapper.Map<Model.ViewModel.Guest>(entity);
             return viewModel;
         }
 
-        private void CreateValidations(GuestPayload payload)
+        private void CreateValidations(Model.InputModel.Guest payload)
         {
             if (string.IsNullOrEmpty(payload.Name))
                 throw new Exception("Nome não informado.");
@@ -50,11 +50,11 @@ namespace Domain.Service
                 throw new Exception("Evento não encontrado.");
         }
 
-        public GuestViewModel Read(Guid id)
+        public Model.ViewModel.Guest Read(Guid id)
         {
             ReadValidations(id);
             var entity = GuestRepository.Read(id);
-            var viewModel = Mapper.Map<GuestViewModel>(entity);
+            var viewModel = Mapper.Map<Model.ViewModel.Guest>(entity);
             return viewModel;
         }
 
@@ -64,15 +64,15 @@ namespace Domain.Service
                 throw new Exception("Id não informado.");
         }
 
-        public void Update(Guid id, GuestPayload payload)
+        public void Update(Guid id, Model.InputModel.Guest payload)
         {
             UpdateValidations(id, payload);
-            var newEntity = Mapper.Map<Guest>(payload);
+            var newEntity = Mapper.Map<Model.Entity.Guest>(payload);
             newEntity.Id = id;
             GuestRepository.Update(newEntity);
         }
 
-        private void UpdateValidations(Guid id, GuestPayload payload)
+        private void UpdateValidations(Guid id, Model.InputModel.Guest payload)
         {
             if (id == Guid.Empty)
                 throw new Exception("Id não informado.");
@@ -109,10 +109,10 @@ namespace Domain.Service
                 throw new Exception("Registro não encontrado.");
         }
 
-        public IEnumerable<GuestViewModel> List()
+        public IEnumerable<Model.ViewModel.Guest> List()
         {
             var entity = GuestRepository.List();
-            var viewModel = Mapper.Map<IEnumerable<GuestViewModel>>(entity);
+            var viewModel = Mapper.Map<IEnumerable<Model.ViewModel.Guest>>(entity);
             return viewModel;
         }
     }

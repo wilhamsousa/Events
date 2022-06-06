@@ -1,5 +1,5 @@
 ﻿using Application.Interface;
-using Domain.Model.Payload;
+using Domain.Model.InputModel;
 using Domain.Model.ViewModel;
 using Domain.Service.Interface;
 using System;
@@ -16,18 +16,18 @@ namespace Application
             GuestService = guestService;
         }
 
-        public GuestViewModel Create(GuestPayload payload)
+        public Domain.Model.ViewModel.Guest Create(Domain.Model.InputModel.Guest payload)
         {
             var result = GuestService.Create(payload);
             return result;
         }
 
-        public void Update(Guid id, GuestPayload payload)
+        public void Update(Guid id, Domain.Model.InputModel.Guest payload)
         {
             GuestService.Update(id, payload);
         }
 
-        public GuestViewModel Read(Guid id)
+        public Domain.Model.ViewModel.Guest Read(Guid id)
         {
             var result = GuestService.Read(id);
             return result;
@@ -38,7 +38,7 @@ namespace Application
             GuestService.Delete(id);
         }
 
-        public IEnumerable<GuestViewModel> List()
+        public IEnumerable<Domain.Model.ViewModel.Guest> List()
         {
             var result = GuestService.List();
             return result;

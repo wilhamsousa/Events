@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.ViewModel
 {
-    public class GuestViewModel
+    public class Guest
     {
         public Guid EventId { get; set; }
         public Guid Id { get; set; }

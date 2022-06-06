@@ -1,5 +1,5 @@
 ﻿using Domain.Model.Entity;
-using Domain.Model.Payload;
+using Domain.Model.InputModel;
 using Domain.Model.ViewModel;
 using Infra.Repository.Base;
 using Infra.Repository.Context;
@@ -10,21 +10,21 @@ using System.Linq;
 
 namespace Infra.Repository
 {
-    public class EventRepository : BaseRepository<Event>, IEventRepository
+    public class EventRepository : BaseRepository<Domain.Model.Entity.Event>, IEventRepository
     {
         public EventRepository(EventContext context) : base(context)
         {
 
         }
 
-        public IEnumerable<DashboardViewModel> Dashboard()
+        public IEnumerable<Dashboard> Dashboard()
         {
             var result = (from e in Context.Event
                           join u in Context.Guest on e.Id equals u.EventId into u2
                           from u3 in u2.DefaultIfEmpty()
                           group u3 by new { e.Id, e.Description, e.DateTime } into ge
                           orderby ge.Key.DateTime descending
-                          select new DashboardViewModel()
+                          select new Dashboard()
                           {
                               EventId = ge.Key.Id,
                               Description = ge.Key.Description,
