@@ -1,6 +1,6 @@
 # Gestão de Eventos
 
-Este projeto tem como finalidade gerenciar a organização de um evento como uma festa ou um churrasco por exemplo
+Este projeto tem como finalidade gerenciar a organização de um evento como uma festa por exemplo
 
 ## 🚀 Começando
 
@@ -54,7 +54,7 @@ A API retorna os seguintes status:
 
 * [.Net](https://docs.microsoft.com/pt-br/dotnet/core/dotnet-five) - Framework .Net 5 com Web API
 * [Entity framework](https://docs.microsoft.com/pt-br/ef/) - ORM
-* [AutoMapper](https://automapper.org/) - Mapeamento Entity - ViewModel
+* [AutoMapper](https://automapper.org/) - Entity mapping - Entity x Input model e ViewModel
 
 ## 🛠️ Técnicas
 
