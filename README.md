@@ -56,6 +56,9 @@ A API retorna os seguintes status:
 * [Entity framework](https://docs.microsoft.com/pt-br/ef/) - ORM
 * [AutoMapper](https://automapper.org/) - Entity mapping - Entity x Input model e ViewModel
 
+## 🛠️ Arquitetura
+* Monólito em camadas
+
 ## 🛠️ Técnicas
 
 * [DDD](https://en.wikipedia.org/wiki/Domain-driven_design) - Domain Driven Design
